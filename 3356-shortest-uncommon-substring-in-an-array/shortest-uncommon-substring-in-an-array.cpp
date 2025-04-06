@@ -2,11 +2,11 @@ class Solution {
 public:
     vector<string> shortestSubstrings(vector<string>& arr) {
         int n = arr.size();
-        map<string, int> mp;
+        unordered_map<string, int> mp;
 
         for (int i = 0; i < n; i++) {
             string s = arr[i];
-            set<string> uniqsubs;
+            unordered_set<string> uniqsubs;
 
             for (int j = 0; j < s.size(); j++) {
                 string temp = "";
