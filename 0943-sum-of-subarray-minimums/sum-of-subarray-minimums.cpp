@@ -8,20 +8,36 @@ public:
 
     // Calculate Previous Less Element (PLE)
     for (int i = 0; i < n; ++i) {
-        while (!st.empty() && arr[st.top()] > arr[i]) st.pop();
-        ple[i] = st.empty() ? -1 : st.top();
-        st.push(i);
+    while (!st.empty() && arr[st.top()] > arr[i]) {
+        st.pop();
     }
+
+    if (st.empty()) {
+        ple[i] = -1;
+    } else {
+        ple[i] = st.top();
+    }
+
+    st.push(i);
+}
 
     // Clear stack for next iteration
     while (!st.empty()) st.pop();
 
     // Calculate Next Less Element (NLE)
     for (int i = n - 1; i >= 0; --i) {
-        while (!st.empty() && arr[st.top()] >= arr[i]) st.pop();
-        nle[i] = st.empty() ? n : st.top();
-        st.push(i);
+    while (!st.empty() && arr[st.top()] >= arr[i]) {
+        st.pop();
     }
+
+    if (st.empty()) {
+        nle[i] = n;
+    } else {
+        nle[i] = st.top();
+    }
+
+    st.push(i);
+}
 
     // Calculate the result
     long long res = 0;
